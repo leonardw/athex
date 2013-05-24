@@ -5,8 +5,8 @@
 	var fs = require('fs'),
 	path = require('path'),
 	regesc = require('quotemeta'),
-	settings = require('../settings'),
-	configReader = require('./config-reader'),
+	config = require('../config'),
+	queue = require('./queue-reader'),
 	mime,
 	DEFAULT_MIME = {
 		txt: 'text/plain',
@@ -17,7 +17,7 @@
 	},
 	DEFAULT_CONTENT_TYPE = "text/html",
 	MIME_CONFIG_FILE = "mime.types",
-	CONTENT_ROOT = settings.DocumentRoot || '.',
+	CONTENT_ROOT = config.DocumentRoot || './docroot',
 	UTF8_ENCODING = 'utf8';
 	
 	fs.readFile(MIME_CONFIG_FILE, UTF8_ENCODING, function(err, data) {
@@ -129,7 +129,7 @@ exports.list = function(req, res){
 		return renderFile(404, res, null);
 	}
 		
-		configReader.next(reqDir+"/"+reqFile+reqExt, req, function(err, file){
+		queue.next(reqDir+"/"+reqFile+reqExt, req, function(err, file){
 			if (!err) {
 				var extMatch = path.basename(file).match(pattern);
 				var mimeExt = (extMatch[5] || extMatch[4] || extMatch[2] || "").substring(1);

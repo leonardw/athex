@@ -8,12 +8,12 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , settings = require('./settings');
+  , config = require('./config');
 
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || settings.Port || 3000);
+app.set('port', process.env.PORT || config.Port || 8880);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -28,7 +28,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-var adminPath = path.join("/", settings.Admin, "/*");
+var adminPath = path.join("/", config.Admin, "/*");
 var adminBasePath = path.dirname(adminPath);
 app.get(adminBasePath, routes.index);
 app.get(adminPath, routes.index);

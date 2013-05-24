@@ -1,7 +1,5 @@
 # athex - Ad hoc Test HTTP Express
 
-**Blog:** pending...
-
 A file-based HTTP server for serving ad hoc content, with random or pre-determined
 document queuing per URL.
 
@@ -21,6 +19,10 @@ document queuing per URL.
 
 Default admin URL is at [http://localhost:8880/admin](http://localhost:8880/admin)
 
+## Blog posts
+**Latest update on Athex** at [http://techtus.blogspot.co.uk/athex](http://techtus.blogspot.co.uk/athex)
+
+24 May 2013, [An unique open source HTTP server called Athex](http://techtus.blogspot.co.uk/2013/05/a-unique-open-source-http-server-called.html)
 
 
 ## License

@@ -24,7 +24,7 @@ Default admin URL is at [http://localhost:8880/admin](http://localhost:8880/admi
 ## License
 (GNU GPL v3 License)
 
-Copyright (c) 2013 Leonard Wu <leonard.wu92@imperial.ac.uk>
+Copyright (c) 2013 Leonard Wu <[leonard.wu92@imperial.ac.uk](mailto:leonard.wu92@imperial.ac.uk)>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -37,4 +37,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+along with this program.  If not, see <[http://www.gnu.org/licenses/](http://www.gnu.org/licenses/)>.

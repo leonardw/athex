@@ -1,0 +1,3 @@
+Ad hoc Test HTTP Express
+
+A file-based HTTP server for serving ad hoc content, with random or pre-determined document queueing per URL.

@@ -1,6 +1,8 @@
 {
-  "name": "ExpressTest",
+  "name": "athex",
   "version": "0.0.1",
+  "description": "A file-based HTTP server for serving ad hoc content",
+  "author": "Leonard Wu",
   "private": true,
   "scripts": {
     "start": "node app.js"

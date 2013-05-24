@@ -1,0 +1,5 @@
+{
+	"DocumentRoot" : "./docroot",
+	"Admin" : "admin",
+	"Port" : 8880
+}

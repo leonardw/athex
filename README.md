@@ -8,7 +8,7 @@ document queuing per URL.
 
 ## Install
 
-**NOTE:** You need to have node.js installed.
+**Prerequisite:** [node.js](http://nodejs.org/) must already be installed.
 
 ```sh
   $ git clone https://github.com/leonardw/athex.git
@@ -16,6 +16,8 @@ document queuing per URL.
   $ npm install
   $ npm start
 ```
+
+**Note:** `npm install` may require superuser privilege
 
 Default admin URL is at [http://localhost:8880/admin](http://localhost:8880/admin)
 

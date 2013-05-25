@@ -5,7 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  , content = require('./routes/content')
   , http = require('http')
   , path = require('path')
   , config = require('./config')
@@ -53,7 +53,7 @@ adminBasePath = path.dirname(adminPath);
 
 app.get(adminBasePath, routes.index);
 app.get(adminPath, routes.index);
-app.get('/*', user.list);
+app.get('/*', content.show);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Athex HTTP Server (' + _version + ') listening on port ' + app.get('port'));

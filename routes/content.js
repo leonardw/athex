@@ -6,7 +6,7 @@
 	path = require('path'),
 	regesc = require('quotemeta'),
 	config = require('../config'),
-	queue = require('./queue-reader'),
+	queue = require('../lib/queue-reader'),
 	mime,
 	DEFAULT_MIME = {
 		txt: 'text/plain',
@@ -107,7 +107,7 @@
 		}
 	}
 
-exports.list = function(req, res){
+exports.show = function(req, res){
 	var url = req.url;
 	
 //	console.log('URL:',url);

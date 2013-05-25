@@ -9,13 +9,31 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , config = require('./config')
-  , util = require('./lib/util')
   , DEFAULT_PORT = 8880;
+
+var _version = require("./package").version,
+argv = require('optimist')
+    .usage('Athex HTTP Server (' + _version + ').\nUsage: $0 [options]')
+    .alias('v', 'version')
+    .describe('v', 'Print version information')
+    .alias('p', 'port')
+    .describe('p', 'Server listening port')
+    .check(function(argv) {
+    	if (argv.port && !(/^[0-9]{1,5}$/.test(argv.port) && argv.port < 65536)) {
+    		throw 'Invalid port number specified';
+    	}
+    })
+    .argv;
+
+if (argv.version) {
+	console.info(_version);
+	process.exit();
+}
 
 var app = express();
 
 // all environments
-app.set('port', util.cli.port || config.Port || DEFAULT_PORT);
+app.set('port', argv.port || config.Port || DEFAULT_PORT);
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'jade');
 app.use(express.favicon(path.join(__dirname, '/public/i/favicon.ico')));
@@ -38,6 +56,6 @@ app.get(adminPath, routes.index);
 app.get('/*', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Athex listening on port ' + app.get('port'));
+  console.log('Athex HTTP Server (' + _version + ') listening on port ' + app.get('port'));
   console.log('Admin URL http://localhost:' + app.get('port')  + adminBasePath);
 });

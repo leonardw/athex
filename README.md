@@ -1,28 +1,32 @@
-# athex - Ad hoc Test HTTP Express
+# harp - HTTP Active Reverse Proxy server
 
-A file-based HTTP server for serving ad hoc content, with random or pre-determined
-document queuing per URL.
+A file-based HTTP server for serving random or queued ad hoc content by URL,
+with an inbuilt reverse proxy for a single origin host.
 
 
 ## Install
 
-**Prerequisite:** [node.js](http://nodejs.org/) must already be installed.
+**Prerequisite:** [Node.js](http://nodejs.org/) must already be installed.
 
 ```sh
-  $ git clone https://github.com/leonardw/athex.git
-  $ cd athex
+  $ git clone git://github.com/leonardw/harp.git
+  $ cd harp
   $ npm install
   $ npm start
 ```
 
-**Note:** `npm install` may require superuser privilege
-
 Default admin URL is at [http://localhost:8880/admin](http://localhost:8880/admin)
 
-## Blog posts
-**Latest update on Athex** at [http://techtus.blogspot.co.uk/athex](http://techtus.blogspot.co.uk/athex)
+## Demo
 
-24 May 2013, [An unique open source HTTP server called Athex](http://techtus.blogspot.co.uk/2013/05/a-unique-open-source-http-server-called.html)
+
+## Configuration
+
+
+## Blog posts
+**Latest update on Harp** at [http://techtus.blogspot.co.uk/harp](http://techtus.blogspot.co.uk/harp)
+
+24 May 2013, [An unique open source HTTP server called Harp](http://techtus.blogspot.co.uk/2013/05/a-unique-open-source-http-server-called.html)
 
 
 ## License

@@ -1,5 +1,8 @@
 {
 	"DocumentRoot" : "./docroot",
 	"Admin" : "admin",
-	"Port" : 8880
+	"Port" : 8880,
+	"OriginHost" : "en.wikipedia.org",
+	"OriginPort" : 80,
+	"ReverseProxyEnable" : true
 }

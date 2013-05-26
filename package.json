@@ -26,6 +26,7 @@
   "dependencies": {
     "express": "3.2.4",
     "jade": "*",
+    "request": "*",
     "optimist": "*",
     "quotemeta": "*"
   },

@@ -4,6 +4,7 @@
  */
 	var fs = require('fs'),
 	path = require('path'),
+	request = require('request'),
 	regesc = require('quotemeta'),
 	config = require('../config'),
 	queue = require('../lib/queue-reader'),
@@ -68,8 +69,15 @@
 		res.send(content.data);
 	}
 	
-	function renderFile(err, res, file, ext) {
+	function renderFile(err, req, res, file, ext) {
 		var statusCode = err||200;
+		
+		if (statusCode == 404 && config.ReverseProxyEnable) {
+			var originUrl = "http://"+ config.OriginHost +":"+ config.OriginPort + req.url;
+			console.log("----origin url:", originUrl);
+			req.pipe(request(originUrl)).pipe(res);
+			return;
+		}
 		
 		if (file) {
 			fs.readFile(file, UTF8_ENCODING, function(ex, data) {
@@ -126,7 +134,7 @@ exports.show = function(req, res){
 	
 	if ( !(fs.existsSync(reqDir)) || !(fs.statSync(reqDir).isDirectory()) ) {
 //		console.log("dir not found %s", reqDir);
-		return renderFile(404, res, null);
+		return renderFile(404, req, res, null);
 	}
 		
 		queue.next(reqDir+"/"+reqFile+reqExt, req, function(err, file){
@@ -135,13 +143,13 @@ exports.show = function(req, res){
 				var mimeExt = (extMatch[5] || extMatch[4] || extMatch[2] || "").substring(1);
 				//console.log('----Extension--['+mimeExt+']--\n',extMatch);
 //				console.log("------file----", file);
-				return renderFile(null, res, file, mimeExt);
+				return renderFile(null, req, res, file, mimeExt);
 			}
 			
 //			console.error("----ERR:", err.code);
 //			console.error("----ERR:", err.message);
 			if (err.code != "ENOENT") {
-				return renderFile(404, res, null);
+				return renderFile(404, req, res, null);
 			}
 			
 			
@@ -156,7 +164,7 @@ exports.show = function(req, res){
 //				console.log("Count: ", count);
 				
 				if (count==0) {
-					return renderFile(404, res, null); //no file found
+					return renderFile(404, req, res, null); //no file found
 				} else {
 					var rand = Math.floor(Math.random()*count);
 					var file = matches[rand];
@@ -167,7 +175,7 @@ exports.show = function(req, res){
 					var mimeExt = (extMatch[5] || extMatch[4] || extMatch[2] || "").substring(1);
 //					console.log('----Extension--['+mimeExt+']--\n',extMatch);
 					
-					return renderFile(null, res, reqDir+"/"+file, mimeExt);
+					return renderFile(null, req, res, reqDir+"/"+file, mimeExt);
 				}				
 			});
 				

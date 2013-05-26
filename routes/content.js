@@ -127,8 +127,6 @@ exports.show = function(req, res){
 //	var pattern = new RegExp("^("+regesc(reqFile+reqExt)+"(\\.[0-9]+)?|"+regesc(reqFile)+"\\.[0-9]+"+regesc(reqExt)+")$");
 	var pattern = new RegExp("^("+regesc(reqFile)+"("+regesc(reqExt)+")(\\.[0-9]+)?(\\.[^ \\.]+)?|"+regesc(reqFile)+"\\.[0-9]+("+regesc(reqExt)+"))$");
 	
-	//var filter = function (x) { return pattern.test(x) };
-	
 //	console.log("reqDir:[%s] reqFile:[%s] reqExt:[%s]", reqDir, reqFile, reqExt);
 //	console.log('regex:',pattern);
 	
@@ -140,8 +138,18 @@ exports.show = function(req, res){
 		queue.next(reqDir+"/"+reqFile+reqExt, req, function(err, file){
 			if (!err) {
 				var extMatch = path.basename(file).match(pattern);
-				var mimeExt = (extMatch[5] || extMatch[4] || extMatch[2] || "").substring(1);
-				//console.log('----Extension--['+mimeExt+']--\n',extMatch);
+				
+//				console.log('---file: ['+file+']');
+//				console.log('basename:',path.basename(file));
+//				console.log('---extMatch\n',extMatch);
+				
+				var mimeExt;
+				if (extMatch) {
+					mimeExt = (extMatch[5] || extMatch[4] || extMatch[2] || "").substring(1);
+				} else {
+					mimeExt = path.extname(file).substring(1);
+				}
+//				console.log('----Extension--['+mimeExt+']');
 //				console.log("------file----", file);
 				return renderFile(null, req, res, file, mimeExt);
 			}

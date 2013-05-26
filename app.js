@@ -13,7 +13,7 @@ var express = require('express')
 
 var _version = require("./package").version,
 argv = require('optimist')
-    .usage('Athex HTTP Server (' + _version + ').\nUsage: $0 [options]')
+    .usage('Harp HTTP Server (' + _version + ').\nUsage: $0 [options]')
     .alias('v', 'version')
     .describe('v', 'Print version information')
     .alias('p', 'port')
@@ -56,6 +56,6 @@ app.get(adminPath, routes.index);
 app.get('/*', content.show);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Athex HTTP Server (' + _version + ') listening on port ' + app.get('port'));
+  console.log('Harp HTTP Server (' + _version + ') listening on port ' + app.get('port'));
   console.log('Admin URL http://localhost:' + app.get('port')  + adminBasePath);
 });

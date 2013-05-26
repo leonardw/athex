@@ -1,16 +1,16 @@
 {
-  "name": "athex",
+  "name": "harp",
   "description": "A file-based HTTP server for serving ad hoc content",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "GPL",
-  "homepage": "http://techtus.blogspot.co.uk/athex",
+  "homepage": "http://techtus.blogspot.co.uk/harp",
   "keywords": [
     "web", "http", "server", "reverse proxy", "testing", "integration test",
     "ad doc", "javascript", "node", "nodejs"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/leonardw/athex.git"
+    "url": "https://github.com/leonardw/harp.git"
   },
   "author": "Leonard Wu <leonard.wu92@imperial.ac.uk>",
   "contributors": [

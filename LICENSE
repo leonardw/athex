@@ -1,6 +1,6 @@
 (GNU GPL v3 License)
 
-Athex - A file-based HTTP server for serving ad hoc content
+Harp - HTTP Active Reverse Proxy server
 Copyright (c) 2013 Leonard Wu <leonard.wu92@imperial.ac.uk>
 
 This program is free software: you can redistribute it and/or modify

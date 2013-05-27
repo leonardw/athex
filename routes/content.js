@@ -5,7 +5,7 @@
 	var fs = require('fs'),
 	path = require('path'),
 	request = require('request'),
-	regesc = require('quotemeta'),
+	regesc = require('escape-regexp'),
 	config = require('../config'),
 	queue = require('../lib/queue-reader'),
 	mime,

@@ -28,7 +28,7 @@
     "jade": "*",
     "request": "*",
     "optimist": "*",
-    "quotemeta": "*"
+    "escape-regexp": "*"
   },
   "devDependencies": {
   }

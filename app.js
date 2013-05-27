@@ -3,13 +3,13 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , content = require('./routes/content')
-  , http = require('http')
-  , path = require('path')
-  , config = require('./config')
-  , DEFAULT_PORT = 8880;
+var express = require('express'),
+    routes = require('./routes'),
+    content = require('./routes/content'),
+    http = require('http'),
+    path = require('path'),
+    config = require('./config'),
+    DEFAULT_PORT = 8880;
 
 var _version = require("./package").version,
 argv = require('optimist')
@@ -19,9 +19,9 @@ argv = require('optimist')
     .alias('p', 'port')
     .describe('p', 'Server listening port')
     .check(function(argv) {
-    	if (argv.port && !(/^[0-9]{1,5}$/.test(argv.port) && argv.port < 65536)) {
-    		throw 'Invalid port number specified';
-    	}
+      if (argv.port && !(/^[0-9]{1,5}$/.test(argv.port) && argv.port < 65536)) {
+        throw 'Invalid port number specified';
+      }
     })
     .argv;
 

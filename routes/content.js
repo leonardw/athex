@@ -171,7 +171,7 @@ exports.show = function(req, res){
 //				console.log("Matches:\n", matches);
 //				console.log("Count: ", count);
 				
-				if (count==0) {
+				if (count===0) {
 					return renderFile(404, req, res, null); //no file found
 				} else {
 					var rand = Math.floor(Math.random()*count);

@@ -5,47 +5,14 @@
 	var fs = require('fs'),
 	path = require('path'),
 	request = require('request'),
+	mime = require('mime'),
 	regesc = require('escape-regexp'),
 	config = require('../config'),
 	queue = require('../lib/queue-reader'),
-	mime,
-	DEFAULT_MIME = {
-		txt: 'text/plain',
-		html: 'text/html',
-		htm: 'text/html',
-		xml: 'application/xml',
-		json: 'application/json'
-	},
 	DEFAULT_CONTENT_TYPE = "text/html",
-	MIME_CONFIG_FILE = "mime.types",
 	CONTENT_ROOT = config.DocumentRoot || './docroot',
 	UTF8_ENCODING = 'utf8';
-	
-	fs.readFile(MIME_CONFIG_FILE, UTF8_ENCODING, function(err, data) {
-		if (err) {
-			console.error("Cannot find MIME configuration file '%s': %s", MIME_CONFIG_FILE, err);
-			mime = DEFAULT_MIME;
-		} else {
-			mime = {};
-			var lines = data.match(/[^\r\n]+/g);
-			for (var i in lines) {
-				var line = lines[i];
-				var hash = line.indexOf("#");
-				if (hash != -1) {
-					line = line.substring(0, hash);
-				}
-				var tokens = line.match(/[^\s]+/g);
-				if (tokens && tokens.length > 1) {
-					for (var i=1, len=tokens.length; i<len; i++) {
-						mime[tokens[i]] = tokens[0];
-						//console.log("[%s] : %s", tokens[i], tokens[0]);
-					}
-				}
-			}
-			//console.log("---mime---\n",mime);
-		}
-	});
-	//console.log("----------config end------------");
+
 	/*
 	{
 		filename:
@@ -89,17 +56,15 @@
 					});
 					return;
 				}
-//				var slash = file.lastIndexOf("/");
-//				var dot = file.lastIndexOf(".");
+				
 				var contentType;
-//				var ext = file.match("\\.([^./]+)$");
 				if (ext) {
 //					console.log("Looking up MIME for extension ", ext);
-					contentType = mime[ext];
+					contentType = mime.lookup(ext);
 				}
 				if (!contentType) {
 //					console.log("MIME not found. Using default.");
-					//contentType = DEFAULT_CONTENT_TYPE;
+					//contentType = DEFAULT_CONTENT_TYPE;     //???really?
 				}
 
 				render(statusCode, res, {
@@ -194,16 +159,7 @@ exports.show = function(req, res){
 			
 		});
 		
-			
-
-	
 //	console.log("------Request",req);
 	//console.log("------Response",res);
-
-
-
-
-
-  
 };
 

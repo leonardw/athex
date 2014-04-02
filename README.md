@@ -32,7 +32,7 @@ Default admin URL is at [http://localhost:8880/admin](http://localhost:8880/admi
 ## License
 (GNU GPL v3 License)
 
-Copyright (c) 2013 Leonard Wu <[leonard.wu92@imperial.ac.uk](mailto:leonard.wu92@imperial.ac.uk)>
+Copyright (c) 2013 Leonard Wu <[leonard.wu92@alumni.imperial.ac.uk](mailto:leonard.wu92@alumni.imperial.ac.uk)>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
